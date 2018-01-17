@@ -23,11 +23,11 @@ namespace kata_vending
                 case Coin.invalid:
                     break;
                 case Coin.nickel:
-                    return 5M;
+                    return 0.05M;
                 case Coin.dime:
-                    return 10M;
+                    return 0.10M;
                 case Coin.quarter:
-                    return 25M;
+                    return 0.25M;
             }
             return 0M;
         }

@@ -25,13 +25,13 @@ namespace kata_vending.Tests
         {
             VendingMachine machine = new VendingMachine();
             machine.AcceptCoin(Money.Coin.nickel);
-            Assert.AreEqual(5m, machine.AcceptedValue());
+            Assert.AreEqual(0.05m, machine.AcceptedValue());
             machine.AcceptCoin(Money.Coin.dime);
-            Assert.AreEqual(10m, machine.AcceptedValue());
+            Assert.AreEqual(0.10m, machine.AcceptedValue());
             machine.AcceptCoin(Money.Coin.quarter);
-            Assert.AreEqual(25m, machine.AcceptedValue());
+            Assert.AreEqual(0.25m, machine.AcceptedValue());
             machine.AcceptCoin(Money.Coin.invalid);
-            Assert.AreEqual(0m, machine.AcceptedValue());
+            Assert.AreEqual(0.00m, machine.AcceptedValue());
         }
     }
 }
