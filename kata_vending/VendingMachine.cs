@@ -8,15 +8,26 @@ namespace kata_vending
 {
     public class VendingMachine
     {
-        public bool acceptCoin(Money.Coin coin)
+        private Money.Coin ?coin;
+
+        public bool AcceptCoin(Money.Coin coin)
         {
-            if (coin == Money.Coin.nickel)
+            if (coin == Money.Coin.nickel || 
+                coin == Money.Coin.dime ||
+                coin == Money.Coin.quarter)
+            {
+                this.coin = coin;
                 return true;
-            if (coin == Money.Coin.dime)
-                return true;
-            if (coin == Money.Coin.quarter)
-                return true;
+            }
+            this.coin = null;
             return false;
+        }
+
+        public decimal AcceptedValue()
+        {
+            if (coin == null)
+                return 0m;
+            return Money.GetValue((Money.Coin) coin);
         }
     }
 }

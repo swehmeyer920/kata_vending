@@ -15,10 +15,23 @@ namespace kata_vending.Tests
         public void acceptCoinTest()
         {
             VendingMachine machine = new VendingMachine();
-            Assert.IsTrue(machine.acceptCoin(Money.Coin.nickel));
-            Assert.IsTrue(machine.acceptCoin(Money.Coin.dime));
-            Assert.IsTrue(machine.acceptCoin(Money.Coin.quarter));
-            Assert.IsFalse(machine.acceptCoin(Money.Coin.invalid));
+            Assert.IsTrue(machine.AcceptCoin(Money.Coin.nickel));
+            Assert.IsTrue(machine.AcceptCoin(Money.Coin.dime));
+            Assert.IsTrue(machine.AcceptCoin(Money.Coin.quarter));
+            Assert.IsFalse(machine.AcceptCoin(Money.Coin.invalid));
+        }
+        [TestMethod()]
+        public void storeCoinTest()
+        {
+            VendingMachine machine = new VendingMachine();
+            machine.AcceptCoin(Money.Coin.nickel);
+            Assert.AreEqual(5m, machine.AcceptedValue());
+            machine.AcceptCoin(Money.Coin.dime);
+            Assert.AreEqual(10m, machine.AcceptedValue());
+            machine.AcceptCoin(Money.Coin.quarter);
+            Assert.AreEqual(25m, machine.AcceptedValue());
+            machine.AcceptCoin(Money.Coin.invalid);
+            Assert.AreEqual(0m, machine.AcceptedValue());
         }
     }
 }
